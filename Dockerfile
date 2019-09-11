@@ -33,6 +33,8 @@ RUN apk add --no-cache \
     zlib-dev \
     libzip-dev
 
+RUN apk add --update nodejs npm
+
 # Install PECL and PEAR extensions
 RUN pecl install \
     imagick
