@@ -39,9 +39,16 @@ RUN apk add --update nodejs npm
 RUN pecl install \
     imagick
 
+# Install Xdebug
+RUN pecl install \
+    xdebug
+RUN docker-php-ext-enable \
+    xdebug
+
 # Install and enable php extensions
 RUN docker-php-ext-enable \
     imagick
+
 RUN docker-php-ext-configure zip --with-libzip
 RUN docker-php-ext-install \
     curl \
@@ -56,8 +63,7 @@ RUN docker-php-ext-install \
     xml \
     gd \
     zip \
-    bcmath \
-    xdebug
+    bcmath
 
 # Install composer
 ENV COMPOSER_HOME /composer
